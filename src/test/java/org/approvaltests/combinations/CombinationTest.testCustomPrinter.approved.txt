@@ -1,2 +1,2 @@
-[Order{qty=1, name='Spaghetti'}] => Order{qty=1, name='Spaghetti'} 
-[Order{qty=2, name='Beer'}] => Order{qty=2, name='Beer'} 
+[1 Spaghetti] => 1 Spaghetti 
+[2 Beer] => 2 Beer 

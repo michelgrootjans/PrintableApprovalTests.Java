@@ -66,6 +66,7 @@ public class CombinationTest
   void testCustomPrinter()
   {
     Order[] orders = {new Order(1, "Spaghetti"), new Order(2, "Beer")};
+    approvals.registerPrinter(Order.class, order -> String.format("%d %s", order.getQty(), order.getName()));
     approvals.verifyAllCombinations(o -> o, orders);
   }
 
