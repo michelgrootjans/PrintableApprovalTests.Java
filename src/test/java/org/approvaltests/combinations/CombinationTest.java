@@ -1,9 +1,17 @@
 package org.approvaltests.combinations;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CombinationTest
 {
+  private PrintableCombinationApprovals approvals;
+
+  @BeforeEach
+  void setUp() {
+    approvals = new PrintableCombinationApprovals();
+  }
+
   @Test
   public void testLockDown()
   {
