@@ -1,0 +1,2 @@
+[Order{qty=1, name='Spaghetti'}] => Order{qty=1, name='Spaghetti'} 
+[Order{qty=2, name='Beer'}] => Order{qty=2, name='Beer'} 

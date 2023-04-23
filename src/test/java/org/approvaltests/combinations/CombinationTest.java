@@ -17,6 +17,7 @@ public class CombinationTest
   {
     approvals.verifyAllCombinations((i, s) -> String.format("[%s, %s]", i, s), new Integer[] {1, 2, 3, 4, 5}, new String[] {"a", "b", "c", "d"});
   }
+
   @Test
   public void testCombinations()
   {
@@ -61,4 +62,37 @@ public class CombinationTest
     approvals.verifyAllCombinations((s, i) -> String.format("(%s,%s)", s, i), strings, numbers);
     // end-snippet
   }
+  @Test
+  void testCustomPrinter()
+  {
+    Order[] orders = {new Order(1, "Spaghetti"), new Order(2, "Beer")};
+    approvals.verifyAllCombinations(o -> o, orders);
+  }
+
+  private class Order {
+    private final int qty;
+    private final String name;
+
+    public Order(int qty, String name) {
+      this.qty = qty;
+      this.name = name;
+    }
+
+    public int getQty() {
+      return qty;
+    }
+
+    public String getName() {
+      return name;
+    }
+
+    @Override
+    public String toString() {
+      return "Order{" +
+          "qty=" + qty +
+          ", name='" + name + '\'' +
+          '}';
+    }
+  }
+
 }
