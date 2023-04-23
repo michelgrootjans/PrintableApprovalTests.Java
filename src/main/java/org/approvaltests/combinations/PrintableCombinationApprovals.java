@@ -1,8 +1,10 @@
 package org.approvaltests.combinations;
 
+import org.approvaltests.core.Options;
 import org.approvaltests.strings.Printable;
 import org.lambda.functions.Function1;
 import org.lambda.functions.Function2;
+import org.lambda.functions.Function3;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,8 +24,47 @@ public class PrintableCombinationApprovals {
         );
     }
 
+    public <IN1, OUT> void verifyAllCombinations(Function1<IN1, OUT> call, IN1[] parameters1, Options options) {
+        CombinationApprovals.verifyAllCombinations(
+            parameter -> printers.print(call.call(parameter.get())),
+            Printable.create(printers::print, parameters1),
+            options
+        );
+    }
+
     public <IN1, IN2, OUT> void verifyAllCombinations(Function2<IN1, IN2, OUT> call, IN1[] parameters1, IN2[] parameters2) {
-        CombinationApprovals.verifyAllCombinations(call, parameters1, parameters2);
+        CombinationApprovals.verifyAllCombinations(
+            (n1, n2) -> printers.print(call.call(n1.get(), n2.get())),
+            Printable.create(printers::print, parameters1),
+            Printable.create(printers::print, parameters2)
+        );
+    }
+
+    public <IN1, IN2, OUT> void verifyAllCombinations(Function2<IN1, IN2, OUT> call, IN1[] parameters1, IN2[] parameters2, Options options) {
+        CombinationApprovals.verifyAllCombinations(
+            (n1, n2) -> printers.print(call.call(n1.get(), n2.get())),
+            Printable.create(printers::print, parameters1),
+            Printable.create(printers::print, parameters2),
+            options
+        );
+    }
+
+    public <IN1, IN2, IN3, OUT> void verifyAllCombinations(Function3<IN1, IN2, IN3, OUT> call, IN1[] parameters1, IN2[] parameters2, IN3[] parameters3) {
+        CombinationApprovals.verifyAllCombinations(
+            (n1, n2, n3) -> printers.print(call.call(n1.get(), n2.get(), n3.get())),
+            Printable.create(printers::print, parameters1),
+            Printable.create(printers::print, parameters2),
+            Printable.create(printers::print, parameters3)
+        );
+    }
+
+    public <IN1, IN2, IN3, OUT> void verifyAllCombinations(Function3<IN1, IN2, IN3, OUT> call, IN1[] parameters1, IN2[] parameters2, IN3[] parameters3, Options options) {
+        CombinationApprovals.verifyAllCombinations(
+            (n1, n2, n3) -> printers.print(call.call(n1.get(), n2.get(), n3.get())),
+            Printable.create(printers::print, parameters1),
+            Printable.create(printers::print, parameters2),
+            Printable.create(printers::print, parameters3)
+        );
     }
 
     private static class Printers {
