@@ -15,8 +15,7 @@ public class CombinationTest
   @Test
   public void testLockDown()
   {
-    CombinationApprovals.verifyAllCombinations((i, s) -> String.format("[%s, %s]", i, s),
-        new Integer[]{1, 2, 3, 4, 5}, new String[]{"a", "b", "c", "d"});
+    approvals.verifyAllCombinations((i, s) -> String.format("[%s, %s]", i, s), new Integer[] {1, 2, 3, 4, 5}, new String[] {"a", "b", "c", "d"});
   }
   @Test
   public void testCombinations()
