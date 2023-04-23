@@ -19,14 +19,14 @@ public class PrintableCombinationApprovals {
 
     public <IN1, OUT> void verifyAllCombinations(Function1<IN1, OUT> call, IN1[] parameters1) {
         CombinationApprovals.verifyAllCombinations(
-            parameter -> printers.print(call.call(parameter.get())),
+            n1 -> printers.print(call.call(n1.get())),
             Printable.create(printers::print, parameters1)
         );
     }
 
     public <IN1, OUT> void verifyAllCombinations(Function1<IN1, OUT> call, IN1[] parameters1, Options options) {
         CombinationApprovals.verifyAllCombinations(
-            parameter -> printers.print(call.call(parameter.get())),
+            n1 -> printers.print(call.call(n1.get())),
             Printable.create(printers::print, parameters1),
             options
         );
